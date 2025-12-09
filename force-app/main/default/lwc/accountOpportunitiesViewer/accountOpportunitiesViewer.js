@@ -12,12 +12,15 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         { label: 'Phase', fieldName: 'StageName', type: 'text' }
     ];
 
-    @wire(getOpportunities, { accountId: '$recordId' }) //error
+    @wire(getOpportunities, { accountId: '$recordId' }) 
     wiredOpportunities({ error, data }) {
         if (data) {
             this.opportunities = data;
             this.error = undefined;
         } else if (error) {
+            error =document.querySelector("h2")
+            error.style.backgroundcolor="red"
+            error.style.fontcolor="white"
             this.error = error;
             this.opportunities = undefined;
         }
@@ -31,7 +34,7 @@ export default class AccountOpportunitiesViewer extends LightningElement {
                 this.error = undefined;
             })
             .catch(error => {
-                this.error = 'Une erreur est survenue lors de la recherche des cases.';
+                this.error = 'Une erreur est survenue lors de la recherche des opportunites.';
             });
     }
 
