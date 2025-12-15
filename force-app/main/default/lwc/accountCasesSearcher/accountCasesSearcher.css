@@ -1,3 +1,4 @@
-/**
- * Created by William on 13/03/2024.
- */
+.slds-m-top_small {
+    display : inline-flex;
+    margin-top : 10px;
+}

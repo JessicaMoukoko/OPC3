@@ -1,1 +1,32 @@
-/* Created by Jessica Moukoko */
+h2 {
+    color: white;
+    background-color: red;
+}
+
+.slds-notify_slds-notify_alert_slds-theme_alert-texture_slds-theme_success_custom {
+    margin-top: 50px;
+    background-color: white;
+}
+
+lightning-datatable {
+    margin-top: 20px;
+  display: flex;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+}
+
+.slds-m-bottom_small {
+    display:flex;
+    margin-bottom: 10px;
+   justify-content: flex-end;
+}
+
+.slds-checkbox_faux {
+visibility: hidden ;
+}

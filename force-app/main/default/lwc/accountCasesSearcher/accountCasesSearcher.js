@@ -1,6 +1,6 @@
 import { LightningElement, track, api } from 'lwc';
 import findCasesBySubject from '@salesforce/apex/AccountCasesController.findCasesBySubject';
-
+import { reduceErrors } from 'c/ldsUtils';
 
 const COLUMNS = [
     { label: 'Sujet', fieldName: 'Subject', type: 'text' },
@@ -12,7 +12,7 @@ export default class AccountCaseSearchComponent extends LightningElement {
     @api recordId;
     @track cases;
     @track error;
-    searchTerm ;
+    searchTerm = '';
     columns = COLUMNS;
 
     updateSearchTerm(event) {
@@ -20,13 +20,20 @@ export default class AccountCaseSearchComponent extends LightningElement {
     }
 
     handleSearch() {
+        if (!this.searchTerm) {
+            this.error = 'Veuillez entrer un mot clé pour la recherche.';
+            this.cases = undefined;
+            return;
+        }
+
         findCasesBySubject({ accountId: this.recordId, subjectSearchTerm: this.searchTerm })
             .then(result => {
                 this.cases = result;
                 this.error = undefined;
             })
             .catch(error => {
-                this.error = 'Une erreur est survenue lors de la recherche des cases.';
+                this.error = reduceErrors(error);
+                this.cases = undefined;
             });
     }
 }
