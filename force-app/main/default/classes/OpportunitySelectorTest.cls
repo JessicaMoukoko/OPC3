@@ -8,6 +8,7 @@ private class OpportunitySelectorTest {
 
     @IsTest
     static void testGetOpportunitiesByAccountId() {
+        // Récupérer le compte de test
         Account testAccount = [SELECT Id FROM Account LIMIT 1];
         Test.startTest();
         List<Opportunity> results = OpportunitySelector.getOpportunitiesByAccountId(testAccount.Id);
